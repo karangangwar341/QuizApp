@@ -75,11 +75,11 @@ const Quiz = () => {
         totalScore += 1;
       }
     });
-    setScore(totalScore);
+   return totalScore;
   };
 
-  const handleSubmitQuiz = () => {
-    const score = calculateScore();
+  const handleSubmitQuiz = async () => {
+    const score = calculateScore(); // No need for `await` here since `calculateScore` isn't asynchronous
     const results = {
       questions,
       selectedAnswers,
@@ -89,6 +89,7 @@ const Quiz = () => {
     localStorage.setItem("quizResults", JSON.stringify(results));
     navigate("/results");
   };
+  
   const handleNextQuestion = () => {
     if (currentQuestionIndex < questions.length - 1) {
       setCurrentQuestionIndex((prevIndex) => prevIndex + 1);
@@ -132,8 +133,10 @@ const Quiz = () => {
               key={index}
               className={`p-2 rounded cursor-pointer transition-all duration-300 ${
                 index === currentQuestionIndex
-                  ? "bg-blue-500 text-white"
-                  : "bg-white text-gray-700 hover:bg-gray-200"
+                ? "bg-blue-500 text-white"
+                : selectedAnswers[index] !== undefined
+                ? "bg-green-200 text-gray-700"
+                : "bg-white text-gray-700 hover:bg-gray-200"
               }`}
               onClick={() => setCurrentQuestionIndex(index)}
             >

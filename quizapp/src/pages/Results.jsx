@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 const Results = () => {
   const navigate = useNavigate();
   const results = JSON.parse(localStorage.getItem("quizResults"));
-
+console.log(results)
   if (!results) {
     return (
       <div className="flex flex-col items-center justify-center h-screen bg-gray-50">
@@ -23,16 +23,16 @@ const Results = () => {
   const { questions, selectedAnswers, score } = results;
 
   return (
-    <div className="min-h-screen bg-gradient-to-r from-purple-50 via-pink-50 to-red-50 flex flex-col items-center p-6">
-      <div className="max-w-3xl w-full bg-white shadow-lg rounded-lg p-8">
+    <div className=" h-auto text-blue-900 bg-gradient-to-r lg:px-44 md:px-24 from-purple-50 via-pink-50 to-red-50 flex flex-col items-center p-6">
+      <div className="w-fit bg-white shadow-lg rounded-lg p-8">
         <h1 className="text-3xl font-bold text-center text-blue-600 mb-4">Quiz Results</h1>
         <p className="text-center text-lg text-gray-700 mb-6">
-          Final Score: <span className="font-semibold text-green-600">{score}</span> / {questions.length}
+          Final Score: <span className="font-semibold text-green-600">{results.score}</span> / {questions.length}
         </p>
         <ul className="space-y-6">
           {questions.map((question, index) => (
             <li key={index} className="border p-4 rounded-md bg-gray-50 shadow-sm">
-              <h3 className="text-lg font-semibold text-gray-800">{question.question}</h3>
+              <h3 className="text-lg font-semibold text-gray-800">{question.id+1+".)  "+question.question}</h3>
               <p className="text-sm mt-2">
                 <span className="font-medium">Your Answer:</span>{" "}
                 <span
