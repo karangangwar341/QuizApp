@@ -113,7 +113,7 @@ const Quiz = () => {
         onSubmitQuiz={handleSubmitQuiz}
       />
       <div className="w-full">
-        <Timer timer={timer} onTimeout={setTimer} />
+        <Timer timer={timer} onTimeout={setTimer} onSubmitQuiz={handleSubmitQuiz}/>
         <Question
           question={currentQuestion.question}
           options={currentQuestion.shuffledOptions}
