@@ -1,7 +1,9 @@
 import React, { useEffect, useState } from "react";
 import { fetchData } from "../api/questions";
+import { useNavigate } from "react-router-dom";
 
 const Quiz = () => {
+  const navigate = useNavigate();
   const [questions, setQuestions] = useState([]);
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
   const [selectedAnswers, setSelectedAnswers] = useState({});
@@ -77,10 +79,16 @@ const Quiz = () => {
   };
 
   const handleSubmitQuiz = () => {
-    calculateScore();
-    setShowResult(true);
+    const score = calculateScore();
+    const results = {
+      questions,
+      selectedAnswers,
+      score,
+    };
+    console.log(results);
+    localStorage.setItem("quizResults", JSON.stringify(results));
+    navigate("/results");
   };
-
   const handleNextQuestion = () => {
     if (currentQuestionIndex < questions.length - 1) {
       setCurrentQuestionIndex((prevIndex) => prevIndex + 1);
@@ -105,23 +113,6 @@ const Quiz = () => {
     return (
       <div className="text-red-500 text-center p-5">
         {error}
-      </div>
-    );
-  }
-
-  if (showResult) {
-    return (
-      <div className="p-5 text-center">
-        <h2 className="text-2xl font-bold mb-5 animate-fade-in">Quiz Complete!</h2>
-        <p className="text-lg mb-5 animate-fade-in delay-100">
-          Your score: {score} / {questions.length}
-        </p>
-        <button
-          onClick={() => window.location.reload()}
-          className="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600 animate-bounce"
-        >
-          Restart Quiz
-        </button>
       </div>
     );
   }
