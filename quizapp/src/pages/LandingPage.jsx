@@ -6,7 +6,7 @@ const LandingPage = () => {
     const navigate= useNavigate();
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
-
+const [loading, setLoading] =useState(false);
   const handleSubmit = async (event) => {
     event.preventDefault(); // Prevent default form submission.
 
@@ -17,10 +17,13 @@ const LandingPage = () => {
     }
 
     try {
+setLoading(true);
+
       const data = await fetchData(); // Fetch data from API.
       console.log("Fetched Data:", data);
       localStorage.setItem("name", name);
       localStorage.setItem("email", email);
+      setLoading(false);
       navigate("/quiz")
 
     } catch (error) {
@@ -29,6 +32,9 @@ const LandingPage = () => {
     }
   };
 
+  if (loading) {
+    return <div className="w-screen h-screen flex items-center justify-items-center justify-center">Loading questions...</div>;
+  }
   return (
     <div className="w-screen text-blue-950/90 h-screen flex-col justify-items-center bg-blue-100 p-12">
       <h1 className="text-5xl font-bold text-center">Welcome to my Quiz App</h1>

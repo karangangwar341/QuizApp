@@ -104,7 +104,7 @@ const Quiz = () => {
   const currentQuestion = questions[currentQuestionIndex];
 
   return (
-    <div className="md:flex h-screen w-screen gap-4 bg-gradient-to-r from-purple-50 via-pink-50 to-red-50">
+    <div className="md:flex h-screen overflow-auto w-screen gap-4 bg-gradient-to-r from-purple-50 via-pink-50 to-red-50">
       <Sidebar
         questions={questions}
         currentQuestionIndex={currentQuestionIndex}

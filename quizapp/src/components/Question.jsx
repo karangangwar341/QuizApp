@@ -9,7 +9,7 @@ export const Question = ({
     onNext,
     onPrevious,
   }) => (
-    <div className="md:px-16 px-8 pb-12 md:pt-16 pt-12 mt-12 text-blue-950 lg:px-36 bg-white rounded-[30px] m-6">
+    <div className="md:px-16 px-8 md:pb-12 pb-4 md:pt-16 pt-4 mt-4 md:mt-16 text-blue-950 lg:px-36 bg-white rounded-[30px] m-6">
       <h2 className="text-xl font-semibold mb-3">{question}</h2>
       <ul className="space-y-3">
         {options.map((option, index) => (

@@ -14,7 +14,7 @@ export const Timer = ({ timer, onTimeout }) => {
   }, [timer, onTimeout]);
 
   return (
-    <div className="fixed z-[50] text-2xl text-black font-semibold p-1 px-8 rounded my-2 right-0 top-0">
+    <div className="fixed z-[50] text-xl md:text-2xl text-black font-semibold p-1 px-8 rounded my-2 right-0 top-0">
       <p className="font-normal">
         Time remaining:{" "}
         <span className={`timer ${timer <= 60 ? "low-time" : ""}`}>

@@ -24,7 +24,7 @@ export const Sidebar = ({
       <div style={{ overflowY: 'auto', msOverflowStyle: 'none', scrollbarWidth: 'none' }} className="flex-col  no-scrollbar w-full md:h-screen border-2 md:w-1/3 lg:w-1/4 bg-white bg-opacity-90 backdrop-blur-sm p-5 overflow-hidden shadow-md rounded-lg animate-slide-in-left">
         <h2 className="flex-1 text-lg font-bold mb-4 text-gray-700">Questions</h2>
         <div className=" flex-1 overflow-auto md:h-[82vh]">
-          <ul className="space-y-2 space-x-2 w-fit h-fit flex md:flex-wrap justify-center items-center">
+          <ul className="space-y-2 space-x-2 w-fit h-fit flex md:flex-wrap items-center">
             {questions.map((_, index) => (
               <li
                 key={index}
@@ -43,12 +43,14 @@ export const Sidebar = ({
             ))}
           </ul>
         </div>
-        <button
+       <div className="w-full text-right">
+       <button
           onClick={onSubmitQuiz}
-          className="flex-1 mt-5 w-full bg-green-500 text-white px-4 py-2 rounded hover:bg-green-600 animate-pulse"
+          className="flex-1 mt-3 w-full bg-green-500 text-white px-4 py-2 rounded hover:bg-green-600 "
         >
           Submit Quiz
         </button>
+       </div>
       </div>
     </>
   );
