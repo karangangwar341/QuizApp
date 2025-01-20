@@ -2,7 +2,7 @@ import axios from "axios";
 
 export const fetchData = async () => {
   try {
-    const res = await axios.get("https://opentdb.com/api.php?amount=4");
+    const res = await axios.get("https://opentdb.com/api.php?amount=30");
 
     // Transform the fetched data to match the desired schema
     const questions = res.data.results.map((item, index) => ({

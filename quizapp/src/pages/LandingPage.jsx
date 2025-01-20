@@ -19,7 +19,6 @@ const LandingPage = () => {
     try {
       const data = await fetchData(); // Fetch data from API.
       console.log("Fetched Data:", data);
-      alert("Data fetched successfully! Check console for details.");
       localStorage.setItem("name", name);
       localStorage.setItem("email", email);
       navigate("/quiz")
@@ -31,7 +30,7 @@ const LandingPage = () => {
   };
 
   return (
-    <div className="w-screen text-blue-950/90 h-screen bg-blue-100 p-12">
+    <div className="w-screen text-blue-950/90 h-screen flex-col justify-items-center bg-blue-100 p-12">
       <h1 className="text-5xl font-bold text-center">Welcome to my Quiz App</h1>
       <p className="text-lg text-left mt-24">Please enter your details</p>
       <div className="bg-white sm:w-[440px] p-3 rounded-[20px] mt-6 shadow-sm shadow-white w-auto h-auto">
